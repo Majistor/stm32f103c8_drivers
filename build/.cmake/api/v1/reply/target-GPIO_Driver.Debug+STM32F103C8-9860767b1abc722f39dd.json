@@ -1,0 +1,181 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/out/GPIO_Driver/STM32F103C8/Debug/GPIO_Driver.axf"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_options",
+			"target_link_libraries",
+			"target_compile_options",
+			"target_include_directories",
+			"target_compile_definitions"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 33,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 100,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 92,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 56,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 39,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 48,
+				"parent" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 3,
+			"id" : "Group_user_libraries::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "Keil_Device_Startup_1_0_0::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "Group_Source_Files::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "GPIO_Driver.Debug+STM32F103C8::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "--target=arm-arm-none-eabi -mcpu=Cortex-M3 -mfpu=none",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "--cpu=Cortex-M3",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "--scatter=/home/majistor/Documents/Embedded/STM32/Blank_solution/build/ac6_linker_script.sct",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "--entry=Reset_Handler",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "--info",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "summarysizes",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "--summary_stderr",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "--diag_suppress=L6314W",
+				"role" : "flags"
+			}
+		],
+		"language" : "C"
+	},
+	"name" : "GPIO_Driver.Debug+STM32F103C8",
+	"nameOnDisk" : "GPIO_Driver.axf",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Object Libraries",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 3,
+			"isGenerated" : true,
+			"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/build/CMakeFiles/Group_Source_Files.dir/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/main.o",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"isGenerated" : true,
+			"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/build/CMakeFiles/Group_user_libraries.dir/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/HAL_GPIO.o",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"isGenerated" : true,
+			"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/build/CMakeFiles/Keil_Device_Startup_1_0_0.dir/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/RTE/Device/STM32F103C8/startup_stm32f10x_md.o",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"isGenerated" : true,
+			"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/build/CMakeFiles/Keil_Device_Startup_1_0_0.dir/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/RTE/Device/STM32F103C8/system_stm32f10x.o",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

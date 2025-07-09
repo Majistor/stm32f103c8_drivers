@@ -1,0 +1,96 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "GPIO_Driver.Debug+STM32F103C8",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "GPIO_Driver.Debug+STM32F103C8::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GPIO_Driver.Debug+STM32F103C8-9860767b1abc722f39dd.json",
+					"name" : "GPIO_Driver.Debug+STM32F103C8",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Group_Source_Files::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Group_Source_Files-abef5a2b30ebf0fdcece.json",
+					"name" : "Group_Source_Files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Group_user_libraries::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Group_user_libraries-8b2428df80d332a1079e.json",
+					"name" : "Group_user_libraries",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Keil_Device_Startup_1_0_0::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Keil_Device_Startup_1_0_0-cd4483a0a01883641851.json",
+					"name" : "Keil_Device_Startup_1_0_0",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "database::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-database-a46901e8eec01ed44408.json",
+					"name" : "database",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/build",
+		"source" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/tmp/GPIO_Driver.Debug+STM32F103C8"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

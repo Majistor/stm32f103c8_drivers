@@ -1,0 +1,205 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "CMakeFiles/Group_user_libraries.dir/./home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/HAL_GPIO.o"
+		}
+	],
+	"backtrace" : 3,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"include",
+			"target_compile_options",
+			"target_link_libraries",
+			"target_compile_definitions",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"groups.cmake",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 89,
+				"parent" : 0
+			},
+			{
+				"file" : 0,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 25,
+				"parent" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 39,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 42,
+				"parent" : 2
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 32,
+				"parent" : 2
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 28,
+				"parent" : 2
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "--target=arm-arm-none-eabi -mcpu=Cortex-M3 -mfpu=none"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "--target=arm-arm-none-eabi"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mcpu=Cortex-M3"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mfpu=none"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "--target=arm-arm-none-eabi"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-c"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mlittle-endian"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-std=gnu11"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-macro-redefined"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-pragma-pack"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-parentheses-equality"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-license-management"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-O0"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 6,
+					"define" : "STM32F10X_MD"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "_RTE_"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 7,
+					"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/RTE/_Debug_STM32F103C8"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/RTE/Device/STM32F103C8"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/home/majistor/.cache/arm/packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/home/majistor/.cache/arm/packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver"
+				},
+				{
+					"isSystem" : true,
+					"path" : "/home/majistor/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"id" : "Group_user_libraries::@6890427a1f51a3e7e1df",
+	"name" : "Group_user_libraries",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/HAL_GPIO.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "OBJECT_LIBRARY"
+}

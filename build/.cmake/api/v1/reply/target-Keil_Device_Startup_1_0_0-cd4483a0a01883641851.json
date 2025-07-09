@@ -1,0 +1,289 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "CMakeFiles/Keil_Device_Startup_1_0_0.dir/./home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/RTE/Device/STM32F103C8/startup_stm32f10x_md.o"
+		},
+		{
+			"path" : "CMakeFiles/Keil_Device_Startup_1_0_0.dir/./home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/RTE/Device/STM32F103C8/system_stm32f10x.o"
+		}
+	],
+	"backtrace" : 3,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"include",
+			"target_compile_options",
+			"target_link_libraries",
+			"target_include_directories",
+			"target_compile_definitions"
+		],
+		"files" : 
+		[
+			"components.cmake",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 90,
+				"parent" : 0
+			},
+			{
+				"file" : 0,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 17,
+				"parent" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 29,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 32,
+				"parent" : 2
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 21,
+				"parent" : 2
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 26,
+				"parent" : 2
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"backtrace" : 4,
+					"fragment" : "-mcpu=Cortex-M3"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mfpu=none"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "--target=arm-arm-none-eabi"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-c"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mlittle-endian"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-masm=auto"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-O0"
+				},
+				{
+					"fragment" : "-Wa,armasm,--pd,\"STM32F10X_MD SETA 1\" -Wa,armasm,--pd,\"_RTE_ SETA 1\" "
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 6,
+					"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/RTE/_Debug_STM32F103C8"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/RTE/Device/STM32F103C8"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/majistor/.cache/arm/packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/majistor/.cache/arm/packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver"
+				}
+			],
+			"language" : "ASM",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "--target=arm-arm-none-eabi -mcpu=Cortex-M3 -mfpu=none"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "--target=arm-arm-none-eabi"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mcpu=Cortex-M3"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mfpu=none"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "--target=arm-arm-none-eabi"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-c"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mlittle-endian"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-std=gnu11"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-macro-redefined"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-pragma-pack"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-parentheses-equality"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-license-management"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-O0"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 7,
+					"define" : "STM32F10X_MD"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "_RTE_"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 6,
+					"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/RTE/_Debug_STM32F103C8"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/RTE/Device/STM32F103C8"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/majistor/.cache/arm/packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/majistor/.cache/arm/packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver"
+				},
+				{
+					"isSystem" : true,
+					"path" : "/home/majistor/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"id" : "Keil_Device_Startup_1_0_0::@6890427a1f51a3e7e1df",
+	"name" : "Keil_Device_Startup_1_0_0",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/RTE/Device/STM32F103C8/startup_stm32f10x_md.s",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "/home/majistor/Documents/Embedded/STM32/Blank_solution/GPIO_Driver/RTE/Device/STM32F103C8/system_stm32f10x.c",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "OBJECT_LIBRARY"
+}

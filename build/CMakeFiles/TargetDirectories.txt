@@ -1,0 +1,7 @@
+/home/majistor/Documents/Embedded/STM32/Blank_solution/build/CMakeFiles/database.dir
+/home/majistor/Documents/Embedded/STM32/Blank_solution/build/CMakeFiles/GPIO_Driver.Debug+STM32F103C8.dir
+/home/majistor/Documents/Embedded/STM32/Blank_solution/build/CMakeFiles/Group_Source_Files.dir
+/home/majistor/Documents/Embedded/STM32/Blank_solution/build/CMakeFiles/Group_user_libraries.dir
+/home/majistor/Documents/Embedded/STM32/Blank_solution/build/CMakeFiles/Keil_Device_Startup_1_0_0.dir
+/home/majistor/Documents/Embedded/STM32/Blank_solution/build/CMakeFiles/edit_cache.dir
+/home/majistor/Documents/Embedded/STM32/Blank_solution/build/CMakeFiles/rebuild_cache.dir

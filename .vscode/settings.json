@@ -1,0 +1,7 @@
+{
+    "clangd.arguments": [
+        "--compile-commands-dir=/home/majistor/Documents/Embedded/STM32/Blank_solution/out/GPIO_Driver/STM32F103C8/Debug"
+    ],
+    "debug.hideSlowPreLaunchWarning": true,
+    "cmake.sourceDirectory": "/home/majistor/Documents/Embedded/STM32/Blank_solution/tmp/GPIO_Driver.Debug+STM32F103C8"
+}
