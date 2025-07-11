@@ -5,6 +5,11 @@
 #include <stdint.h>
 #include "RTE_Components.h"
 
+
+//STATE
+#define HIGH 1
+#define LOW 0
+
 #define OUTPUT_MODE 0x01
 #define INPUT_MODE 0x02
 
@@ -27,10 +32,10 @@
 
 // enable clock
 #define ENABLE_GPIO_CLOCK_ALTERNATE_FUNCTION (RCC->AB2ENR |= (1 << 0))
-#define ENABLE_GPIO_CLOCK_PORT_A (RCC->AB2ENR |= (1 << 2))
-#define ENABLE_GPIO_CLOCK_PORT_B (RCC->AB2ENR |= (1 << 3))
-#define ENABLE_GPIO_CLOCK_PORT_C (RCC->AB2ENR |= (1 << 4))
-#define ENABLE_GPIO_CLOCK_PORT_D (RCC->AB2ENR |= (1 << 5))
+#define ENABLE_GPIO_CLOCK_PORT_A (RCC->APB2ENR |= (1 << 2))
+#define ENABLE_GPIO_CLOCK_PORT_B (RCC->APB2ENR |= (1 << 3))
+#define ENABLE_GPIO_CLOCK_PORT_C (RCC->APB2ENR |= (1 << 4))
+#define ENABLE_GPIO_CLOCK_PORT_D (RCC->APB2ENR |= (1 << 5))
 
 // mode bits of GPIOs
 
@@ -44,6 +49,7 @@
 
 typedef struct
 {
+    GPIO_TypeDef *gpio;
     uint32_t pin_Number;
     uint32_t mode;
     uint32_t mode_type;
@@ -59,6 +65,12 @@ typedef struct
 //                    GPIO CONFIGURATION
 static void config_pin(GPIO_TypeDef *gpio, uint32_t pin_Number,uint32_t mode_type);
 static void config_pin_speed(GPIO_TypeDef *gpio, uint32_t pin_Number, uint32_t pin_speed, uint32_t mode);
+
+//***************************GPIO USER FUNCTIONS********************** */
+
+void gpio_write(GPIO_TypeDef *gpio ,uint32_t pinNumber,uint8_t state);
+void gpio_toggle(GPIO_TypeDef *gpio, uint32_t pinNummber);
+void gpio_init(GPIO_TYPE gpio_type);
 
 
 

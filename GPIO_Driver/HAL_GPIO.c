@@ -1,11 +1,12 @@
 
 #include "HAL_GPIO.h"
+#include "stm32f10x.h"
 #include <stdint.h>
 
 static void config_pin(GPIO_TypeDef *gpio, uint32_t pin_Number,
                        uint32_t mode_type) {
 
-  if (pin_Number > 7) {
+  if (pin_Number > 7) { //control high register
 
     switch (mode_type) {
 
@@ -33,7 +34,7 @@ static void config_pin(GPIO_TypeDef *gpio, uint32_t pin_Number,
     } // switch
   } // if
 
-  else {
+  else {// control low registers
 
     switch (mode_type) {
 
@@ -63,7 +64,7 @@ static void config_pin(GPIO_TypeDef *gpio, uint32_t pin_Number,
 
 static void config_pin_speed(GPIO_TypeDef *gpio, uint32_t pin_Number,
                              uint32_t pin_speed, uint32_t mode) {
-  if (pin_Number > 7) {
+  if (pin_Number > 7) { //control high register
     if (mode == INPUT_MODE) {
       gpio->CRH &= ~(1 << MODE_POS_BIT1 | 1 << MODE_POS_BIT2);
     } // if
@@ -86,7 +87,7 @@ static void config_pin_speed(GPIO_TypeDef *gpio, uint32_t pin_Number,
 
     } // else
   } // if
-  else {
+  else { //control low register
     if (mode == INPUT_MODE) {
       gpio->CRL &= ~(1 << MODE_POS_BIT1 | 1 << MODE_POS_BIT2);
     } // if
@@ -111,3 +112,41 @@ static void config_pin_speed(GPIO_TypeDef *gpio, uint32_t pin_Number,
   } // else
 
 } // config_pin_speed
+
+void gpio_write(GPIO_TypeDef *gpio, uint32_t pinNumber, uint8_t state)
+{
+
+if(state)
+{
+  gpio->BSRR = 1<<pinNumber;
+}
+else {
+{
+  gpio->BSRR = 1<<(pinNumber+16); 
+}
+}
+
+}//gpio_write
+
+void gpio_toggle(GPIO_TypeDef *gpio, uint32_t pinNummber)
+{
+
+  gpio->ODR ^= (1<<pinNummber);
+
+}//gpio_toggle
+
+void gpio_init(GPIO_TYPE gpio_type)
+{
+  if(gpio_type.gpio == GPIOA)
+  ENABLE_GPIO_CLOCK_PORT_A;
+ if(gpio_type.gpio == GPIOB)
+  ENABLE_GPIO_CLOCK_PORT_B;
+ if(gpio_type.gpio == GPIOC)
+  ENABLE_GPIO_CLOCK_PORT_C;
+ if(gpio_type.gpio == GPIOD)
+  ENABLE_GPIO_CLOCK_PORT_D;
+
+  config_pin(gpio_type.gpio, gpio_type.pin_Number, gpio_type.mode_type);
+  config_pin_speed(gpio_type.gpio, gpio_type.pin_Number, gpio_type.speed, gpio_type.mode);
+
+}
