@@ -31,7 +31,7 @@
 #define OUTPUT_50MHZ ((uint32_t)0x03) // 11: Output mode, max speed 50 MHz
 
 // enable clock
-#define ENABLE_GPIO_CLOCK_ALTERNATE_FUNCTION (RCC->AB2ENR |= (1 << 0))
+#define ENABLE_GPIO_CLOCK_ALTERNATE_FUNCTION (RCC->APB2ENR |= (1 << 0))
 #define ENABLE_GPIO_CLOCK_PORT_A (RCC->APB2ENR |= (1 << 2))
 #define ENABLE_GPIO_CLOCK_PORT_B (RCC->APB2ENR |= (1 << 3))
 #define ENABLE_GPIO_CLOCK_PORT_C (RCC->APB2ENR |= (1 << 4))
@@ -59,6 +59,12 @@ typedef struct
 
 } GPIO_TYPE;
 
+typedef enum{
+    RISING_EDGE,
+    FALLING_EDGE,
+    RISING_FALLING_EDGE
+}edge_select;
+
 // Funnction Prototypes
 
 //***************************************************************** */
@@ -71,6 +77,12 @@ static void config_pin_speed(GPIO_TypeDef *gpio, uint32_t pin_Number, uint32_t p
 void gpio_write(GPIO_TypeDef *gpio ,uint32_t pinNumber,uint8_t state);
 void gpio_toggle(GPIO_TypeDef *gpio, uint32_t pinNummber);
 void gpio_init(GPIO_TYPE gpio_type);
+
+//*************************INTERRUPT FUNCTIONS********************* */
+
+void config_gpio_interrupt(GPIO_TypeDef *gpio, uint32_t pin_Number,edge_select edge);
+void enable_gpio_interrupt(uint32_t pin_Number, IRQn_Type irqNumber);
+void clear_gpio_interrupt(uint32_t pin_Number);
 
 
 

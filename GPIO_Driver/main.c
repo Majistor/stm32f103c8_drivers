@@ -18,6 +18,9 @@ int main() {
 
   gpio_init(my_gpio);
 
+  config_gpio_interrupt(GPIOB, 4, RISING_EDGE);
+  enable_gpio_interrupt(4, EXTI4_IRQn);
+
   while (1) {
     // GPIOC->BSRR = 1 << 13; // pin high
     // for (int i = 0; i <= 500000; i++);
@@ -27,4 +30,8 @@ int main() {
     for (int i = 0; i <= 500000; i++)
       ;
   }
+}
+void EXTI4_IRQ_Handler()
+{
+  clear_gpio_interrupt(4);
 }
