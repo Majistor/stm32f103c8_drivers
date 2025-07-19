@@ -3,6 +3,7 @@
 #include CMSIS_device_header
 #include "HAL_GPIO.h"
 #include "stm32f10x.h"
+void go_to_sleep(void);
 
 int main() {
   // // initialize clock at gpio c
@@ -22,28 +23,29 @@ int main() {
 
  gpio_init(my_gpio);
 
-  // config_gpio_interrupt(GPIOB, 4, RISING_EDGE);
-  // enable_gpio_interrupt(4, EXTI4_IRQn);
+  config_gpio_interrupt(GPIOB, 4, RISING_EDGE);
+  enable_gpio_interrupt(4, EXTI4_IRQn);
 
   //************************Power Controls************************ */
 
-  // if ((PWR->CSR) & (PWR_CSR_SBF)) // check standby flag
-  // {
-  //   // clear power wake up flag
+  if ((PWR->CSR) & (PWR_CSR_SBF)) // check standby flag
+  {
+    // clear power wake up flag
 
-  //   PWR->CR |= PWR_CR_CWUF;
+    PWR->CR |= PWR_CR_CWUF;
 
-  //   // clear standby flag
+    // clear standby flag
 
-  //   PWR->CR |= PWR_CR_CSBF;
+    PWR->CR |= PWR_CR_CSBF;
 
-  //   printf("woke from standby");
+   // printf("woke from standby");
 
-  // } // standby check "if"
+  } // standby check "if"
 
-  // else {
-  //   printf("woke up from power cycle");
-  // }
+  else {
+    ;
+   // printf("woke up from power cycle");
+  }
 
   while (1) {
     // GPIOC->BSRR = 1 << 13; // pin high
@@ -51,9 +53,10 @@ int main() {
     // GPIOC->BSRR = 1 << (13 + 16); // pin low
     //  for (int i = 0; i <= 500000; i++);
     gpio_write(GPIOC, 13,1);
-    for (int i = 0; i <= 500000; i++);
+    for (int i = 0; i <= 5000000; i++);
     gpio_write(GPIOC, 13,0);
-    for (int i = 0; i <= 500000; i++);
+    for (int i = 0; i <= 5000000; i++);
+    go_to_sleep();
   }
 }
 void EXTI4_IRQ_Handler() { clear_gpio_interrupt(4); }
