@@ -1,0 +1,3 @@
+Connect
+LoadFile out/GPIO_Driver/STM32F103C8/Debug/GPIO_Driver.axf
+Exit

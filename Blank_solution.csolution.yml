@@ -19,6 +19,15 @@ solution:
   target-types:
     - type: STM32F103C8
       device: STM32F103C8
+      target-set:
+        - set:
+          images:
+            - project-context: GPIO_Driver.Debug
+          debugger:
+            name: ST-Link@pyOCD
+            port: 3333
+            protocol: swd
+            clock: 10000000
 
   # List of different build configurations.
   build-types:

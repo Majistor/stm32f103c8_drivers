@@ -16,40 +16,44 @@ int main() {
   my_gpio.mode = OUTPUT_MODE;
   my_gpio.mode_type = OUTPUT_GEN_PURPOSE;
   my_gpio.speed = OUTPUT_50MHZ;
+  my_gpio.pin_Number=13;
 
-  gpio_init(my_gpio);
+  
 
-  config_gpio_interrupt(GPIOB, 4, RISING_EDGE);
-  enable_gpio_interrupt(4, EXTI4_IRQn);
+ gpio_init(my_gpio);
+
+  // config_gpio_interrupt(GPIOB, 4, RISING_EDGE);
+  // enable_gpio_interrupt(4, EXTI4_IRQn);
 
   //************************Power Controls************************ */
 
-  if ((PWR->CSR) & (PWR_CSR_SBF)) // check standby flag
-  {
-    // clear power wake up flag
+  // if ((PWR->CSR) & (PWR_CSR_SBF)) // check standby flag
+  // {
+  //   // clear power wake up flag
 
-    PWR->CR |= PWR_CR_CWUF;
+  //   PWR->CR |= PWR_CR_CWUF;
 
-    // clear standby flag
+  //   // clear standby flag
 
-    PWR->CR |= PWR_CR_CSBF;
+  //   PWR->CR |= PWR_CR_CSBF;
 
-    printf("woke from standby");
+  //   printf("woke from standby");
 
-  } // standby check "if"
+  // } // standby check "if"
 
-  else {
-    printf("woke up from power cycle");
-  }
+  // else {
+  //   printf("woke up from power cycle");
+  // }
 
   while (1) {
     // GPIOC->BSRR = 1 << 13; // pin high
     // for (int i = 0; i <= 500000; i++);
     // GPIOC->BSRR = 1 << (13 + 16); // pin low
     //  for (int i = 0; i <= 500000; i++);
-    gpio_toggle(GPIOC, 13);
-    for (int i = 0; i <= 500000; i++)
-      ;
+    gpio_write(GPIOC, 13,1);
+    for (int i = 0; i <= 500000; i++);
+    gpio_write(GPIOC, 13,0);
+    for (int i = 0; i <= 500000; i++);
   }
 }
 void EXTI4_IRQ_Handler() { clear_gpio_interrupt(4); }

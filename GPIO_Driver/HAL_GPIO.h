@@ -45,7 +45,7 @@
 // CNF bits of GPIO
 
 #define CNF_POS_BIT1 (((pin_Number % 8) * 4) + 2)
-#define CNF_POS_BIT2 ((((pin_Number % 8) * 4) + 1) + 3)
+#define CNF_POS_BIT2 (((pin_Number % 8) * 4)  + 3)
 
 typedef struct
 {

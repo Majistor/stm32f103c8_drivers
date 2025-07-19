@@ -114,21 +114,21 @@ static void config_pin_speed(GPIO_TypeDef *gpio, uint32_t pin_Number,
 
 } // config_pin_speed
 
-void gpio_write(GPIO_TypeDef *gpio, uint32_t pinNumber, uint8_t state) {
+void gpio_write(GPIO_TypeDef *gpio, uint32_t pin_Number, uint8_t state) {
 
   if (state) {
-    gpio->BSRR = 1 << pinNumber;
+    gpio->BSRR = 1 << pin_Number;
   } else {
     {
-      gpio->BSRR = 1 << (pinNumber + 16);
+      gpio->BSRR = 1 << (pin_Number + 16);
     }
   }
 
 } // gpio_write
 
-void gpio_toggle(GPIO_TypeDef *gpio, uint32_t pinNummber) {
+void gpio_toggle(GPIO_TypeDef *gpio, uint32_t pin_Number) {
 
-  gpio->ODR ^= (1 << pinNummber);
+  gpio->ODR ^= (1 << pin_Number);
 
 } // gpio_toggle
 
