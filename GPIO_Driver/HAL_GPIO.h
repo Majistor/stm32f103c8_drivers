@@ -1,12 +1,11 @@
 #ifndef HAL_GPIO
 #define HAL_GPIO
 
+#include "RTE_Components.h"
 #include "stm32f10x.h"
 #include <stdint.h>
-#include "RTE_Components.h"
 
-
-//STATE
+// STATE
 #define HIGH 1
 #define LOW 0
 
@@ -45,45 +44,46 @@
 // CNF bits of GPIO
 
 #define CNF_POS_BIT1 (((pin_Number % 8) * 4) + 2)
-#define CNF_POS_BIT2 (((pin_Number % 8) * 4)  + 3)
+#define CNF_POS_BIT2 (((pin_Number % 8) * 4) + 3)
 
-typedef struct
-{
-    GPIO_TypeDef *gpio;
-    uint32_t pin_Number;
-    uint32_t mode;
-    uint32_t mode_type;
-    uint32_t pull;
-    uint32_t speed;
-    uint32_t alt_func;
+typedef struct {
+  GPIO_TypeDef *gpio;
+  uint32_t pin_Number;
+  uint32_t mode;
+  uint32_t mode_type;
+  uint32_t pull;
+  uint32_t speed;
+  uint32_t alt_func;
 
 } GPIO_TYPE;
 
-typedef enum{
-    RISING_EDGE,
-    FALLING_EDGE,
-    RISING_FALLING_EDGE
-}edge_select;
+typedef enum { RISING_EDGE, FALLING_EDGE, RISING_FALLING_EDGE } edge_select;
 
 // Funnction Prototypes
 
 //***************************************************************** */
 //                    GPIO CONFIGURATION
-static void config_pin(GPIO_TypeDef *gpio, uint32_t pin_Number,uint32_t mode_type);
-static void config_pin_speed(GPIO_TypeDef *gpio, uint32_t pin_Number, uint32_t pin_speed, uint32_t mode);
+static void config_pin(GPIO_TypeDef *gpio, uint32_t pin_Number,
+                       uint32_t mode_type);
+static void config_pin_speed(GPIO_TypeDef *gpio, uint32_t pin_Number,
+                             uint32_t pin_speed, uint32_t mode);
 
 //***************************GPIO USER FUNCTIONS********************** */
 
-void gpio_write(GPIO_TypeDef *gpio ,uint32_t pinNumber,uint8_t state);
+void gpio_write(GPIO_TypeDef *gpio, uint32_t pinNumber, uint8_t state);
 void gpio_toggle(GPIO_TypeDef *gpio, uint32_t pinNummber);
 void gpio_init(GPIO_TYPE gpio_type);
 
 //*************************INTERRUPT FUNCTIONS********************* */
 
-void config_gpio_interrupt(GPIO_TypeDef *gpio, uint32_t pin_Number,edge_select edge);
+void config_gpio_interrupt(GPIO_TypeDef *gpio, uint32_t pin_Number,
+                           edge_select edge);
 void enable_gpio_interrupt(uint32_t pin_Number, IRQn_Type irqNumber);
 void clear_gpio_interrupt(uint32_t pin_Number);
 
+//***************************UART FUNCTIONS***********************************
+//*/
 
+void uart_init(GPIO_TypeDef *gpio);
 
 #endif

@@ -320,17 +320,21 @@ void config_gpio_interrupt(GPIO_TypeDef *gpio, uint32_t pin_Number,
 
 } // config_gpio_interrupt
 
-void enable_gpio_interrupt(uint32_t pin_Number, IRQn_Type irqNumber)
-{
-//enable interrupt in EXTI
-EXTI->IMR|= 1<<pin_Number;
-//enable interrupt in NVIC
-NVIC_EnableIRQ(irqNumber);
+void enable_gpio_interrupt(uint32_t pin_Number, IRQn_Type irqNumber) {
+  // enable interrupt in EXTI
+  EXTI->IMR |= 1 << pin_Number;
+  // enable interrupt in NVIC
+  NVIC_EnableIRQ(irqNumber);
 
-}//enable gpio interrupt
+} // enable gpio interrupt
 
-void clear_gpio_interrupt(uint32_t pin_Number)
-{
-EXTI->PR|=1<<pin_Number;
+void clear_gpio_interrupt(uint32_t pin_Number) {
+  EXTI->PR |= 1 << pin_Number;
 
-}//clear gpio interrupt
+} // clear gpio interrupt
+
+//***************************GPIO FUNCTIONS ***************************** */
+
+void uart_init(GPIO_TypeDef *gpio) {
+  RCC->APB2ENR |= RCC_APB2ENR_USART1EN | RCC_APB2ENR_IOPAEN;
+}

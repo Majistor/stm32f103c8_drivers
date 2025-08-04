@@ -6,6 +6,7 @@
 void go_to_sleep(void);
 
 int main() {
+
   // // initialize clock at gpio c
   // RCC->APB2ENR |= 1 << 4;
 
@@ -17,11 +18,9 @@ int main() {
   my_gpio.mode = OUTPUT_MODE;
   my_gpio.mode_type = OUTPUT_GEN_PURPOSE;
   my_gpio.speed = OUTPUT_50MHZ;
-  my_gpio.pin_Number=13;
+  my_gpio.pin_Number = 13;
 
-  
-
- gpio_init(my_gpio);
+  gpio_init(my_gpio);
 
   config_gpio_interrupt(GPIOB, 4, RISING_EDGE);
   enable_gpio_interrupt(4, EXTI4_IRQn);
@@ -38,13 +37,13 @@ int main() {
 
     PWR->CR |= PWR_CR_CSBF;
 
-   // printf("woke from standby");
+    // printf("woke from standby");
 
   } // standby check "if"
 
   else {
     ;
-   // printf("woke up from power cycle");
+    // printf("woke up from power cycle");
   }
 
   while (1) {
@@ -52,10 +51,12 @@ int main() {
     // for (int i = 0; i <= 500000; i++);
     // GPIOC->BSRR = 1 << (13 + 16); // pin low
     //  for (int i = 0; i <= 500000; i++);
-    gpio_write(GPIOC, 13,1);
-    for (int i = 0; i <= 5000000; i++);
-    gpio_write(GPIOC, 13,0);
-    for (int i = 0; i <= 5000000; i++);
+    gpio_write(GPIOC, 13, 1);
+    for (int i = 0; i <= 5000000; i++)
+      ;
+    gpio_write(GPIOC, 13, 0);
+    for (int i = 0; i <= 5000000; i++)
+      ;
     go_to_sleep();
   }
 }

@@ -68,15 +68,15 @@
 	[
 		{
 			"backtrace" : 3,
-			"id" : "Group_Source_Files::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 3,
 			"id" : "Group_user_libraries::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 3,
 			"id" : "Keil_Device_Startup_1_0_0::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "Group_Source_Files::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "GPIO_Driver.Debug+STM32F103C8::@6890427a1f51a3e7e1df",
