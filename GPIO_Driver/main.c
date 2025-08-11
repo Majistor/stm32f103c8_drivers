@@ -57,7 +57,8 @@ int main() {
     gpio_write(GPIOC, 13, 0);
     for (int i = 0; i <= 5000000; i++)
       ;
-    go_to_sleep();
+    // go_to_sleep();
+    // uart_init();
   }
 }
 void EXTI4_IRQ_Handler() { clear_gpio_interrupt(4); }

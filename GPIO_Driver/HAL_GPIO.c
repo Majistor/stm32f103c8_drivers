@@ -3,6 +3,8 @@
 #include "stm32f10x.h"
 #include <stdint.h>
 
+void ADC1_2_IRQHandler(int buff);
+
 static void config_pin(GPIO_TypeDef *gpio, uint32_t pin_Number,
                        uint32_t mode_type) {
 
@@ -333,8 +335,85 @@ void clear_gpio_interrupt(uint32_t pin_Number) {
 
 } // clear gpio interrupt
 
-//***************************GPIO FUNCTIONS ***************************** */
+//***************************USART FUNCTIONS ***************************** */
 
-void uart_init(GPIO_TypeDef *gpio) {
-  RCC->APB2ENR |= RCC_APB2ENR_USART1EN | RCC_APB2ENR_IOPAEN;
+// void uart_init() {
+//   RCC->APB2ENR |= RCC_APB2ENR_USART1EN | RCC_APB2ENR_IOPAEN;
+
+//   GPIOA->CRH |= GPIO_CRH_MODE9 | GPIO_CRH_MODE9_1;
+//   GPIOA->CRH &= ~(GPIO_CRH_MODE9_0);
+
+//   USART1->BRR = 0x1d4c;
+
+//   USART1->CR1 |= 1 << 2 | 1 << 3 | 1 << 13;
+
+//   while (1) {
+
+//     if (USART1->SR & USART_SR_RXNE) {
+
+//       char temp[] = "Hello";
+//       USART1->DR = temp[6];
+//       while (!(USART1->SR & USART_SR_TC)) {
+//         ;
+//       }
+//     }
+//   }
+// }
+
+//**************************ADC Functions************************
+//  */
+
+void adc_config(uint32_t chan_num, ADC_TypeDef *adc_num, int buff) {
+  // change prescaler  for adc to not exceed 14Mhz
+  RCC->CFGR |= RCC_CFGR_ADCPRE_DIV6;
+  // enable RCC clocks
+  RCC->APB2ENR |= RCC_APB2ENR_ADC1EN | RCC_APB2ENR_AFIOEN | RCC_APB2ENR_IOPAEN;
+
+  // enable end of conversion interrupt
+  adc_num->CR1 |= ADC_CR1_EOCIE;
+  // enable that interrupt in nvic
+  NVIC_EnableIRQ(ADC1_2_IRQn);
+
+  if (chan_num > 9) {
+    adc_num->SMPR1 |= 1 << ((chan_num - 10) * 3 + 0) |
+                      1 << ((chan_num - 10) * 3 + 1) |
+                      1 << ((chan_num - 10) * 3 + 2);
+  } else
+
+  {
+    adc_num->SMPR2 |= 1 << (chan_num * 3 + 0) | 1 << (chan_num * 3 + 1) |
+                      1 << (chan_num * 3 + 2);
+  }
+
+  // set the sequence of the channels
+  ADC1->SQR3 |= ADC_SQR3_SQ1_0 | ADC_SQR3_SQ1_2;
+
+  // enable the adc for the first time and set to continous mode
+
+  ADC1->CR2 |= ADC_CR2_ADON | ADC_CR2_CONT;
+
+  for (int i = 0; i <= 5000000; i++) {
+    ;
+  }
+  // turn on adc for the 2nd time as given in the data sheet
+  ADC1->CR2 |= ADC_CR2_ADON;
+
+  for (int i = 0; i <= 5000000; i++) {
+    ;
+  }
+  ADC1->CR2 |= ADC_CR2_CAL;
+  while (ADC1->CR2 == ~(ADC_CR2_CAL))
+    ;
+
+  ADC1_2_IRQHandler(buff);
+  while (1) {
+    printf("ADC1 ch[%d]:%d \r", chan_num, buff);
+  }
+}
+
+void ADC1_2_IRQHandler(int buff) {
+  if (ADC1->SR & ADC_SR_EOC) {
+
+    buff = ADC1->DR;
+  }
 }

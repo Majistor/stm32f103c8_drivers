@@ -84,6 +84,10 @@ void clear_gpio_interrupt(uint32_t pin_Number);
 //***************************UART FUNCTIONS***********************************
 //*/
 
-void uart_init(GPIO_TypeDef *gpio);
+void uart_init();
+
+//****************************ADC FUNCTIONS************************************
+// */
+void adc_config(uint32_t chan_num, ADC_TypeDef *adc_num, int buff);
 
 #endif
