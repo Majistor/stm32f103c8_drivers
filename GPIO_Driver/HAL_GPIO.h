@@ -88,6 +88,8 @@ void uart_init();
 
 //****************************ADC FUNCTIONS************************************
 // */
-void adc_config(uint32_t chan_num, ADC_TypeDef *adc_num, int buff);
+void adc_init(uint32_t seq_len, uint16_t *samples, ADC_TypeDef *adc_num);
+void adc_config(uint32_t chan_num, ADC_TypeDef *adc_num, uint32_t seq_len,
+                uint32_t buff);
 
 #endif

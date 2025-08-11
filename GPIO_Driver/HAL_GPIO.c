@@ -260,7 +260,8 @@ void config_gpio_interrupt(GPIO_TypeDef *gpio, uint32_t pin_Number,
     case 11:
       AFIO->EXTICR[2] = AFIO_EXTICR3_EXTI11_PC;
     case 12:
-      AFIO->EXTICR[3] = AFIO_EXTICR4_EXTI12_PC;
+      AFIO->EXTICR[3] = AF[2] = {0, 0};
+      IO_EXTICR4_EXTI12_PC;
     case 13:
       AFIO->EXTICR[3] = AFIO_EXTICR4_EXTI13_PC;
     case 14:
@@ -363,16 +364,37 @@ void clear_gpio_interrupt(uint32_t pin_Number) {
 //**************************ADC Functions************************
 //  */
 
-void adc_config(uint32_t chan_num, ADC_TypeDef *adc_num, int buff) {
+void adc_init(uint32_t seq_len, uint16_t *samples, ADC_TypeDef *adc_num) {
   // change prescaler  for adc to not exceed 14Mhz
   RCC->CFGR |= RCC_CFGR_ADCPRE_DIV6;
   // enable RCC clocks
   RCC->APB2ENR |= RCC_APB2ENR_ADC1EN | RCC_APB2ENR_AFIOEN | RCC_APB2ENR_IOPAEN;
 
+  // enabled DMA
+  RCC->AHBENR |= RCC_AHBENR_DMA1EN;
+
+  // set number of channels
+  adc_num->SQR1 |= (seq_len - 1) << 20;
+
+  adc_num->CR1 |= ADC_CR1_SCAN;
+  adc_num->CR2 |= ADC_CR2_DMA;
+
+  // dma settings
+  DMA1_Channel1->CPAR = (uint32_t)(&(ADC1->DR));
+  DMA1_Channel1->CMAR = (uint32_t)samples;
+  DMA1_Channel1->CNDTR = seq_len;
+  DMA1_Channel1->CCR =
+      DMA_CCR1_CIRC | DMA_CCR1_MINC | DMA_CCR1_PSIZE_0 | DMA_CCR1_MSIZE_0;
+  DMA1_Channel1->CCR = DMA_CCR1_EN;
+}
+
+void adc_config(uint32_t chan_num, ADC_TypeDef *adc_num, uint32_t seq_len,
+                uint32_t buff) {
+
   // enable end of conversion interrupt
-  adc_num->CR1 |= ADC_CR1_EOCIE;
+  // adc_num->CR1 |= ADC_CR1_EOCIE;
   // enable that interrupt in nvic
-  NVIC_EnableIRQ(ADC1_2_IRQn);
+  // NVIC_EnableIRQ(ADC1_2_IRQn);
 
   if (chan_num > 9) {
     adc_num->SMPR1 |= 1 << ((chan_num - 10) * 3 + 0) |
@@ -387,6 +409,8 @@ void adc_config(uint32_t chan_num, ADC_TypeDef *adc_num, int buff) {
 
   // set the sequence of the channels
   ADC1->SQR3 |= ADC_SQR3_SQ1_0 | ADC_SQR3_SQ1_2;
+
+  // dma setting
 
   // enable the adc for the first time and set to continous mode
 
@@ -405,15 +429,12 @@ void adc_config(uint32_t chan_num, ADC_TypeDef *adc_num, int buff) {
   while (ADC1->CR2 == ~(ADC_CR2_CAL))
     ;
 
-  ADC1_2_IRQHandler(buff);
-  while (1) {
-    printf("ADC1 ch[%d]:%d \r", chan_num, buff);
-  }
+  // ADC1_2_IRQHandler(buff);
 }
 
-void ADC1_2_IRQHandler(int buff) {
-  if (ADC1->SR & ADC_SR_EOC) {
+// void ADC1_2_IRQHandler(int buff) {
+//   if (ADC1->SR & ADC_SR_EOC) {
 
-    buff = ADC1->DR;
-  }
-}
+//     buff = ADC1->DR;
+//   }
+// }
