@@ -260,8 +260,7 @@ void config_gpio_interrupt(GPIO_TypeDef *gpio, uint32_t pin_Number,
     case 11:
       AFIO->EXTICR[2] = AFIO_EXTICR3_EXTI11_PC;
     case 12:
-      AFIO->EXTICR[3] = AF[2] = {0, 0};
-      IO_EXTICR4_EXTI12_PC;
+      AFIO->EXTICR[3] = AFIO_EXTICR4_EXTI12_PC;
     case 13:
       AFIO->EXTICR[3] = AFIO_EXTICR4_EXTI13_PC;
     case 14:
@@ -336,30 +335,39 @@ void clear_gpio_interrupt(uint32_t pin_Number) {
 
 } // clear gpio interrupt
 
+//*************************pringMsg debug ********************************* */
+
+void printMsg() {}
+
 //***************************USART FUNCTIONS ***************************** */
 
-// void uart_init() {
-//   RCC->APB2ENR |= RCC_APB2ENR_USART1EN | RCC_APB2ENR_IOPAEN;
+void uart_init() {
+  RCC->APB2ENR |= RCC_APB2ENR_USART1EN | RCC_APB2ENR_IOPAEN;
 
-//   GPIOA->CRH |= GPIO_CRH_MODE9 | GPIO_CRH_MODE9_1;
-//   GPIOA->CRH &= ~(GPIO_CRH_MODE9_0);
+  GPIOA->CRH |= GPIO_CRH_MODE9 | GPIO_CRH_MODE9_1;
+  GPIOA->CRH &= ~(GPIO_CRH_MODE9_0);
 
-//   USART1->BRR = 0x1d4c;
+  USART1->BRR = 0x1d4c;
 
-//   USART1->CR1 |= 1 << 2 | 1 << 3 | 1 << 13;
+  USART1->CR1 |= 1 << 2 | 1 << 3 | 1 << 13;
+  NVIC_EnableIRQ(USART1_IRQn);
+}
 
-//   while (1) {
+void USART1_IRQnHandler(void) {
 
-//     if (USART1->SR & USART_SR_RXNE) {
+  if (USART1->SR & USART_SR_RXNE) {
 
-//       char temp[] = "Hello";
-//       USART1->DR = temp[6];
-//       while (!(USART1->SR & USART_SR_TC)) {
-//         ;
-//       }
-//     }
-//   }
-// }
+    char temp = USART1->DR;
+    USART1->DR = temp;
+    while (!(USART1->SR & USART_SR_TC)) {
+      ;
+    }
+    // check if we are her bcz of TXEIE interrupt
+    if (USART1->SR & USART_SR_TXE) {
+      // handle TXE interrupt
+    }
+  }
+}
 
 //**************************ADC Functions************************
 //  */

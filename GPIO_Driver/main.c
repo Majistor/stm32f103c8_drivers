@@ -52,13 +52,13 @@ int main() {
     // GPIOC->BSRR = 1 << (13 + 16); // pin low
     //  for (int i = 0; i <= 500000; i++);
     gpio_write(GPIOC, 13, 1);
-    for (int i = 0; i <= 5000000; i++)
+    for (int i = 0; i <= 500000; i++)
       ;
     gpio_write(GPIOC, 13, 0);
-    for (int i = 0; i <= 5000000; i++)
+    for (int i = 0; i <= 500000; i++)
       ;
     // go_to_sleep();
-    // uart_init();
+    uart_init();
   }
 }
 void EXTI4_IRQ_Handler() { clear_gpio_interrupt(4); }
